@@ -32,7 +32,7 @@ class IntroPage extends StatelessWidget {
               ),
             ),
             Container(
-              
+
             ),
           ],
         ),
