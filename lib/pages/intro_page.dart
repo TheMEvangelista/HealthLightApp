@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'home_page.dart';
 
 class IntroPage extends StatelessWidget {
@@ -36,7 +35,7 @@ class IntroPage extends StatelessWidget {
             GestureDetector(
               onTap: () => Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: ((context) {
-                return HomePage();
+                return const HomePage();
               }))),
               child: Container(
                 decoration: BoxDecoration(
@@ -47,14 +46,15 @@ class IntroPage extends StatelessWidget {
                 child: const Text(
                   "Vamos começar... ",
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
           ],
-        )
+        ),
       ]),
     );
   }
