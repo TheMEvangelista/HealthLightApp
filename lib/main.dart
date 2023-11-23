@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'pages/intro_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HealthLight());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HealthLight extends StatelessWidget {
+  const HealthLight({super.key});
 
   @override
   Widget build(BuildContext context) {
