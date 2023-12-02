@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthlight/pages/login_page.dart';
 import 'pages/intro_page.dart';
 
 void main() {
@@ -12,10 +13,7 @@ class HealthLight extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: IntroPage(),
+      home: LoginPage(),
     );
   }
 }
-
-
-// Gesture Detector Button
