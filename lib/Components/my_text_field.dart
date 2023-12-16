@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthlight/Colors/palete_colors.dart';
+import 'package:healthlight/Extensions/size_screen.dart';
 
 class MyTextField extends StatelessWidget {
   const MyTextField({
@@ -23,10 +24,9 @@ class MyTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return SizedBox(
       child: TextFormField(
+        textAlign: TextAlign.center,
         controller: textController,
         obscureText: isObscureText!,
         keyboardType: keyboardType,
@@ -34,8 +34,8 @@ class MyTextField extends StatelessWidget {
         style: GoogleFonts.aoboshiOne(fontSize: 18),
         decoration: InputDecoration(
           constraints: BoxConstraints(
-            maxHeight: height * 0.1,
-            maxWidth: width * 0.9,
+            maxHeight: context.screenHeight * 0.3,
+            maxWidth: context.screenWidth * 0.9,
           ),
           filled: true,
           fillColor: color,
@@ -43,13 +43,13 @@ class MyTextField extends StatelessWidget {
           hintStyle: GoogleFonts.aoboshiOne(fontSize: 18),
           prefixIcon: prefixIcon,
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(20),
             borderSide: const BorderSide(
               color: AppColors.transparent,
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(20),
             borderSide: const BorderSide(
               color: AppColors.transparent,
             ),

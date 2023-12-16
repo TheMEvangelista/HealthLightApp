@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/intro_page.dart';
+import 'package:healthlight/pages/intro_page.dart';
 
 void main() {
   runApp(const HealthLight());

@@ -1,69 +1,119 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthlight/Colors/palete_colors.dart';
 import 'package:healthlight/Components/custom_button.dart';
+import 'package:healthlight/Extensions/size_screen.dart';
+import 'package:healthlight/pages/signin_page.dart';
+import 'package:healthlight/pages/signup_page.dart';
 
-class IntroPage extends StatefulWidget {
+class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
 
   @override
-  State<IntroPage> createState() => _IntroPageState();
-}
-
-class _IntroPageState extends State<IntroPage> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
+            Image.asset(
+              "assets/images/Background3.jpg",
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+            ),
+            Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(height: 80),
                   Image.asset(
-                    "lib/images/logoHL.png",
-                    height: 130,
-                    width: 130,
+                    'assets/images/logoHL.png',
+                    width: 125,
+                    height: 125,
+                    alignment: Alignment.bottomCenter,
                   ),
                   Text(
-                    "HealthLight",
+                    "HealLight",
                     style: GoogleFonts.aoboshiOne(
-                      color: const Color.fromARGB(200, 28, 155, 140),
-                      fontSize: 18,
+                      fontSize: 23,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.blue1,
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
+            SingleChildScrollView(
               child: Column(
                 children: [
-                  Image.asset("lib/images/Doctors.png"),
-                  Text(
-                    "Bem-vindo a HealthLight! Aqui voçê vai encontrar o profissional certo para cuidar da sua saúde.",
-                    style: GoogleFonts.aoboshiOne(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                  SizedBox(
+                    width: double.infinity,
+                    height: context.screenHeight,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Spacer(flex: 2),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Image.asset("assets/images/Doctors.png"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            'Bem-vindo a HealLight! Aqui você vai encontrar o profissional certo para cuidar da sua saúde.',
+                            style: GoogleFonts.aoboshiOne(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.blue1),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 7,
+                            right: 7,
+                            bottom: 20,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomButton(
+                                textName: "Sign In",
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const SignInPage();
+                                  }));
+                                },
+                                textSize: 20,
+                                btnWidth: 200,
+                                color: AppColors.green1,
+                                colorText: AppColors.white,
+                              ),
+                              CustomButton(
+                                textName: "Sign Up",
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const SignUpPage();
+                                  }));
+                                },
+                                textSize: 20,
+                                btnWidth: 200,
+                                colorText: AppColors.blue2,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-              child: CustomButton(
-                textName: "Vamos começar...",
-              ),
-            )
           ],
         ),
       ),
