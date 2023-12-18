@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthlight/Colors/palete_colors.dart';
 import 'package:healthlight/Components/custom_button.dart';
-import 'package:healthlight/Extensions/size_screen.dart';
-import 'package:healthlight/pages/signin_page.dart';
-import 'package:healthlight/pages/signup_page.dart';
+import 'package:healthlight/pages/signIn_page.dart';
+import 'package:healthlight/pages/signUp_page.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -13,19 +12,12 @@ class IntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Stack(
+        body: Column(
           children: [
-            Image.asset(
-              "assets/images/Background3.jpg",
-              fit: BoxFit.cover,
-              height: double.infinity,
-              width: double.infinity,
-            ),
-            Center(
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 80),
                   Image.asset(
                     'assets/images/logoHL.png',
                     width: 125,
@@ -34,7 +26,7 @@ class IntroPage extends StatelessWidget {
                   ),
                   Text(
                     "HealLight",
-                    style: GoogleFonts.aoboshiOne(
+                    style: GoogleFonts.montserrat(
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
                       color: AppColors.blue1,
@@ -43,76 +35,69 @@ class IntroPage extends StatelessWidget {
                 ],
               ),
             ),
-            SingleChildScrollView(
-              child: Column(
+            const Spacer(flex: 2),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Image.asset("assets/images/Doctors.png"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Bem-vindo a HealLight! Aqui você vai encontrar o profissional certo para cuidar da sua saúde.',
+                style: GoogleFonts.montserrat(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.blue2),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 7,
+                right: 7,
+                bottom: 20,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: context.screenHeight,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const Spacer(flex: 2),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Image.asset("assets/images/Doctors.png"),
+                  CustomButton(
+                    textName: "Sign In",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const SignInPage();
+                          },
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Text(
-                            'Bem-vindo a HealLight! Aqui você vai encontrar o profissional certo para cuidar da sua saúde.',
-                            style: GoogleFonts.aoboshiOne(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.blue1),
-                          ),
+                      );
+                    },
+                    textSize: 20,
+                    btnWidth: 200,
+                    color: AppColors.blue2,
+                    colorText: AppColors.white,
+                  ),
+                  CustomButton(
+                    textName: "Sign Up",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const SignUpPage();
+                          },
                         ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 7,
-                            right: 7,
-                            bottom: 20,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CustomButton(
-                                textName: "Sign In",
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return const SignInPage();
-                                  }));
-                                },
-                                textSize: 20,
-                                btnWidth: 200,
-                                color: AppColors.green1,
-                                colorText: AppColors.white,
-                              ),
-                              CustomButton(
-                                textName: "Sign Up",
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return const SignUpPage();
-                                  }));
-                                },
-                                textSize: 20,
-                                btnWidth: 200,
-                                colorText: AppColors.blue2,
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
+                      );
+                    },
+                    textSize: 20,
+                    btnWidth: 200,
+                    colorText: AppColors.blue2,
                   ),
                 ],
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
           ],
         ),
