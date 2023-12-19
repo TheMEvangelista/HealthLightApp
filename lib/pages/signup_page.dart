@@ -4,7 +4,8 @@ import 'package:healthlight/Components/back_button.dart';
 import 'package:healthlight/Colors/palete_colors.dart';
 import 'package:healthlight/Components/custom_button.dart';
 import 'package:healthlight/Components/my_text_field.dart';
-import 'package:healthlight/pages/account_page.dart';
+import 'package:healthlight/Extensions/size_screen.dart';
+import 'package:healthlight/pages/recovery_password_page.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -14,141 +15,143 @@ class SignUpPage extends StatelessWidget {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
           children: [
-            const SizedBox(
-              height: 10,
+            const Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Row(
+                children: [
+                  CustomBackButton(),
+                ],
+              ),
             ),
-            Row(
-              children: [
-                Header(onPress: () {
-                  Navigator.pop(context);
-                }),
-              ],
+            Center(
+              child: Column(
+                children: [
+                  const SizedBox(height: 80),
+                  Image.asset(
+                    'assets/images/logoHL.png',
+                    width: 125,
+                    height: 125,
+                    alignment: Alignment.bottomCenter,
+                  ),
+                  Text(
+                    "HealLight",
+                    style: GoogleFonts.aoboshiOne(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.blue1,
+                    ),
+                  ),
+                ],
+              ),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Image.asset(
-                  'assets/images/logoHL.png',
-                  width: 130,
-                  height: 130,
-                  alignment: Alignment.bottomCenter,
-                ),
-                Text(
-                  "HealLight",
-                  style: GoogleFonts.aoboshiOne(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.blue1,
+                Container(
+                  height: context.screenHeight * 0.59,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: AppColors.blue4,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(50),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            Container(
-              height: 500,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: AppColors.blue4,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(50),
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 27, vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Welcome Back!",
+                                    style: GoogleFonts.aoboshiOne(
+                                        fontSize: 25, color: AppColors.white),
+                                  ),
+                                  Text(
+                                    "Faça login para começar",
+                                    style: GoogleFonts.aoboshiOne(
+                                        fontSize: 15, color: AppColors.white),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Crie sua conta",
-                              style: GoogleFonts.aoboshiOne(
-                                  fontSize: 25, color: AppColors.white),
+                            MyTextField(
+                              textName: 'Fullname',
+                              textController: emailController,
+                              keyboardType: TextInputType.text,
+                              color: AppColors.white,
+                              prefixIcon: const Icon(
+                                Icons.person_2_outlined,
+                                color: AppColors.greyLight,
+                              ),
                             ),
-                            Text(
-                              "Faça login para começar",
-                              style: GoogleFonts.aoboshiOne(
-                                  fontSize: 15, color: AppColors.white),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            MyTextField(
+                              textName: 'Email',
+                              textController: emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              color: AppColors.white,
+                              prefixIcon: const Icon(
+                                Icons.email_outlined,
+                                color: AppColors.greyLight,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            MyTextField(
+                              textName: 'Password',
+                              textController: passwordController,
+                              keyboardType: TextInputType.number,
+                              color: AppColors.white,
+                              prefixIcon: const Icon(
+                                Icons.vpn_key_outlined,
+                                color: AppColors.greyLight,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            CustomButton(
+                              textName: 'Create Account',
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return const RecoveryPasswordPage();
+                                    },
+                                  ),
+                                );
+                              },
+                              color: AppColors.blue2,
+                              textSize: 23,
+                              btnWidth: MediaQuery.of(context).size.width * 0.9,
+                              colorText: AppColors.white,
                             ),
                           ],
                         ),
                       ],
                     ),
                   ),
-                  Column(
-                    children: [
-                      MyTextField(
-                        textName: 'FullName',
-                        textController: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        color: AppColors.white,
-                        prefixIcon: const Icon(
-                          Icons.person_outlined,
-                          color: AppColors.greyLight,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      MyTextField(
-                        textName: 'Email',
-                        textController: passwordController,
-                        keyboardType: TextInputType.number,
-                        color: AppColors.white,
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: AppColors.greyLight,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      MyTextField(
-                        textName: 'Password',
-                        textController: passwordController,
-                        keyboardType: TextInputType.number,
-                        color: AppColors.white,
-                        prefixIcon: const Icon(
-                          Icons.vpn_key_outlined,
-                          color: AppColors.greyLight,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    children: [
-                      CustomButton(
-                        textName: 'Create Conta',
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const AccountPage();
-                          }));
-                        },
-                        color: AppColors.blue2,
-                        textSize: 18,
-                        btnWidth: MediaQuery.of(context).size.width * 0.9,
-                        colorText: AppColors.white,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

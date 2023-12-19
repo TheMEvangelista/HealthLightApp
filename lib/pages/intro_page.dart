@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthlight/Colors/palete_colors.dart';
 import 'package:healthlight/Components/custom_button.dart';
-import 'package:healthlight/pages/signIn_page.dart';
+import 'package:healthlight/pages/signin_page.dart';
 import 'package:healthlight/pages/signUp_page.dart';
 
 class IntroPage extends StatelessWidget {
@@ -41,7 +41,7 @@ class IntroPage extends StatelessWidget {
               child: Image.asset("assets/images/Doctors.png"),
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Text(
                 'Bem-vindo a HealLight! Aqui você vai encontrar o profissional certo para cuidar da sua saúde.',
                 style: GoogleFonts.montserrat(
@@ -52,13 +52,9 @@ class IntroPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.only(
-                left: 7,
-                right: 7,
-                bottom: 20,
-              ),
+              padding: const EdgeInsets.only(top: 10, right: 5, left: 5),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   CustomButton(
                     textName: "Sign In",
@@ -73,7 +69,7 @@ class IntroPage extends StatelessWidget {
                       );
                     },
                     textSize: 20,
-                    btnWidth: 200,
+                    btnWidth: 195,
                     color: AppColors.blue2,
                     colorText: AppColors.white,
                   ),
@@ -90,7 +86,7 @@ class IntroPage extends StatelessWidget {
                       );
                     },
                     textSize: 20,
-                    btnWidth: 200,
+                    btnWidth: 195,
                     colorText: AppColors.blue2,
                   ),
                 ],

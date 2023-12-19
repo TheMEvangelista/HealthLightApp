@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthlight/Extensions/size_screen.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -25,17 +24,15 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: btnWidth,
-      height: btnHeight,
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          minimumSize: const Size(80, 80),
-          maximumSize: const Size(400, 100),
+          minimumSize: Size(btnWidth ?? 80, btnHeight ?? 70),
+          maximumSize: Size(btnWidth ?? 400, btnHeight ?? 70),
           backgroundColor: color,
           elevation: 1.0,
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
         child: Center(

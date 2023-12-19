@@ -4,6 +4,7 @@ import 'package:healthlight/Components/back_button.dart';
 import 'package:healthlight/Colors/palete_colors.dart';
 import 'package:healthlight/Components/custom_button.dart';
 import 'package:healthlight/Components/my_text_field.dart';
+import 'package:healthlight/Extensions/size_screen.dart';
 import 'package:healthlight/pages/recovery_password_page.dart';
 
 class SignInPage extends StatelessWidget {
@@ -14,142 +15,151 @@ class SignInPage extends StatelessWidget {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+            const Padding(
+              padding: EdgeInsets.only(top: 10),
               child: Row(
                 children: [
-                  Header(onPress: () {
-                    Navigator.pop(context);
-                  }),
+                  CustomBackButton(),
+                ],
+              ),
+            ),
+            Center(
+              child: Column(
+                children: [
+                  const SizedBox(height: 80),
+                  Image.asset(
+                    'assets/images/logoHL.png',
+                    width: 125,
+                    height: 125,
+                    alignment: Alignment.bottomCenter,
+                  ),
+                  Text(
+                    "HealLight",
+                    style: GoogleFonts.aoboshiOne(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.blue1,
+                    ),
+                  ),
                 ],
               ),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Image.asset(
-                  'assets/images/logoHL.png',
-                  width: 125,
-                  height: 125,
-                  alignment: Alignment.bottomCenter,
-                ),
-                Text(
-                  "HealLight",
-                  style: GoogleFonts.aoboshiOne(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.blue1,
+                Container(
+                  height: context.screenHeight * 0.59,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: AppColors.blue4,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(50),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            Container(
-              height: 500,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: AppColors.blue4,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(50),
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 27, vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 27, vertical: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Welcome Back!",
+                                    style: GoogleFonts.aoboshiOne(
+                                        fontSize: 25, color: AppColors.white),
+                                  ),
+                                  Text(
+                                    "Faça login para começar",
+                                    style: GoogleFonts.aoboshiOne(
+                                        fontSize: 15, color: AppColors.white),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 20),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Welcome Back!",
-                              style: GoogleFonts.aoboshiOne(
-                                  fontSize: 25, color: AppColors.white),
+                            MyTextField(
+                              textName: 'Email',
+                              textController: emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              color: AppColors.white,
+                              prefixIcon: const Icon(
+                                Icons.email_outlined,
+                                color: AppColors.greyLight,
+                              ),
                             ),
-                            Text(
-                              "Faça login para começar",
-                              style: GoogleFonts.aoboshiOne(
-                                  fontSize: 15, color: AppColors.white),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            MyTextField(
+                              textName: 'Password',
+                              textController: passwordController,
+                              keyboardType: TextInputType.number,
+                              color: AppColors.white,
+                              prefixIcon: const Icon(
+                                Icons.vpn_key_outlined,
+                                color: AppColors.greyLight,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 25),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const RecoveryPasswordPage();
+                                      }));
+                                    },
+                                    child: Text(
+                                      'Esqueceu sua senha?',
+                                      style: GoogleFonts.aoboshiOne(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            AppColors.white.withOpacity(0.85),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 60,
+                            ),
+                            CustomButton(
+                              textName: 'Login',
+                              onTap: () {},
+                              color: AppColors.blue2,
+                              textSize: 23,
+                              btnWidth: MediaQuery.of(context).size.width * 0.9,
+                              colorText: AppColors.white,
                             ),
                           ],
                         ),
                       ],
                     ),
                   ),
-                  Column(
-                    children: [
-                      MyTextField(
-                        textName: 'Your email',
-                        textController: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        color: AppColors.white,
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: AppColors.greyLight,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      MyTextField(
-                        textName: 'Your Password',
-                        textController: passwordController,
-                        keyboardType: TextInputType.number,
-                        color: AppColors.white,
-                        prefixIcon: const Icon(
-                          Icons.vpn_key_outlined,
-                          color: AppColors.greyLight,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    children: [
-                      CustomButton(
-                        textName: 'Login',
-                        onTap: () {},
-                        color: AppColors.blue2,
-                        textSize: 23,
-                        btnWidth: MediaQuery.of(context).size.width * 0.9,
-                        colorText: AppColors.white,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const RecoveryPasswordPage();
-                          }));
-                        },
-                        child: Text(
-                          'Esqueceu sua senha?',
-                          style: GoogleFonts.aoboshiOne(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.white.withOpacity(0.85),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

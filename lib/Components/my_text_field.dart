@@ -51,7 +51,8 @@ class MyTextField extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: const BorderSide(
-            color: AppColors.transparent,
+            color: AppColors.grey,
+            width: 1.5,
           ),
         ),
       ),
