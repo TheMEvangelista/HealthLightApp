@@ -65,8 +65,7 @@ class SignInPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 27, vertical: 20),
+                          padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
