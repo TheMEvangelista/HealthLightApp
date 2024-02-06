@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../colors/palete_colors.dart';
 import '../../../configs/size_config.dart';
+import '../../../components/default_button.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -11,63 +12,60 @@ class Body extends StatelessWidget {
     return SafeArea(
       child: SizedBox(
         width: double.infinity,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: getScreenHeight(context, 20),
-                ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: getScreenWidth(context, 25),
+            vertical: getScreenHeight(context, 20),
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 4,
                 child: Column(
                   children: [
                     Image.asset(
                       "assets/images/logoHL.png",
-                      width: 130,
-                      height: 130,
+                      height: getScreenHeight(context, 130),
                     ),
-                    const Spacer(flex: 1),
                     Text(
-                      'HealthLight',
+                      "HealthLight",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: getScreenWidth(context, 46),
-                        color: blue4,
+                        fontSize: getScreenWidth(context, 22),
+                        color: blueButton,
                       ),
                     ),
-                    const Spacer(flex: 1),
+                    const Spacer(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: getScreenHeight(context, 10)),
+                      child: Image.asset(
+                        "assets/images/Doctors.png",
+                      ),
+                    ),
+                    const Text(
+                      "Bem-vindo ao HealthLight!\nAqui você encontra o profissional certo para cuidar da sua saúde",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),
-            ),
-            Expanded(
-              flex: 4,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: getScreenWidth(context, 20),
-                ),
+              Expanded(
+                flex: 1,
                 child: Column(
                   children: [
-                    Image.asset("assets/images/Doctors.png"),
+                    const Spacer(),
+                    DefaultButton(
+                      text: "Vamos começar",
+                      press: () {},
+                    ),
                   ],
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    child: Container(
-                      color: Colors.red,
-                      height: 110.7,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
