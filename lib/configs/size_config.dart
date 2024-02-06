@@ -41,5 +41,5 @@ double getScreenHeight(BuildContext context, double inputHeight) {
 
 double getScreenWidth(BuildContext context, double inputWidth) {
   double width = MediaQuery.of(context).size.width;
-  return (inputWidth / 812.0) * width;
+  return (inputWidth / 375.0) * width;
 }
