@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../sign_in/components/body.dart';
+
 class SignInScreen extends StatelessWidget {
   static String routeName = "/sign_in";
   const SignInScreen({super.key});
@@ -7,7 +9,12 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text(
+          "Login",
+        ),
+      ),
+      body: const Body(),
     );
   }
 }
