@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../colors/palete_colors.dart';
 import '../configs/size_config.dart';
 
-class DefaultButton extends StatelessWidget {
+class ButtonComponent extends StatelessWidget {
   final String text;
   final Function() press;
 
-  const DefaultButton({
+  const ButtonComponent({
     super.key,
     required this.text,
     required this.press,
@@ -16,17 +16,17 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      width: double.infinity,
+      height: 52,
       child: TextButton(
-        onPressed: press,
         style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(greenButton)),
-        child: Container(
-          width: getScreenWidth(context, 200),
-          height: getScreenHeight(context, 50),
-          alignment: Alignment.center,
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+            backgroundColor: MaterialStatePropertyAll(primaryColor),
+            foregroundColor: MaterialStatePropertyAll(textColor)),
+        onPressed: press,
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: getScreenHeight(context, 18),
           ),
         ),
       ),
