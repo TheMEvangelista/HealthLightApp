@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/colors/palete_colors.dart';
 
 ThemeData theme() {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    fontFamily: "Oswald",
+    scaffoldBackgroundColor: bgColor,
+    fontFamily: "AoboshiOne",
     visualDensity: VisualDensity.adaptivePlatformDensity,
     inputDecorationTheme: inputDecorationTheme(),
     appBarTheme: appBarTheme(),
-    textTheme: textTheme(),
   );
 }
 
 InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(28),
-    borderSide: const BorderSide(color: Colors.orange),
+    borderSide: const BorderSide(color: primaryColor),
     gapPadding: 10,
   );
+
   return InputDecorationTheme(
     contentPadding: const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
     border: outlineInputBorder,
@@ -27,15 +28,12 @@ InputDecorationTheme inputDecorationTheme() {
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-      color: Colors.white,
-      elevation: 0,
-      iconTheme: IconThemeData(color: Colors.black));
-}
-
-TextTheme textTheme() {
-  return const TextTheme(
-    bodyLarge: TextStyle(color: Colors.black),
-    bodyMedium: TextStyle(color: Colors.black),
-    bodySmall: TextStyle(color: Colors.black),
+    color: bgColor,
+    centerTitle: true,
+    elevation: 0,
+    scrolledUnderElevation: 0,
+    iconTheme: IconThemeData(color: Colors.black),
+    titleTextStyle: TextStyle(
+        fontSize: 20, color: Color(0xff2b2d42), fontFamily: "AoboshiOne"),
   );
 }
